@@ -16,13 +16,16 @@ object ArticleService {
 
         @GET("artikli")
         fun getAll(): Call<List<Article>>
+
+        @GET("artikli")
+        fun get(@Query("id") id: Int): Call<Article>
     }
 
     val instance: RestApi by lazy {
         val retrofit = Retrofit.Builder()
-                .baseUrl(RestApi.URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .baseUrl(RestApi.URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
         retrofit.create(RestApi::class.java)
     }

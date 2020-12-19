@@ -23,13 +23,15 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
 
         adapter = ArticleAdapter(this)
         items.adapter = adapter
-        //items.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
-        //    val article = adapter.getItem(i)
-//
-//            if (article != null) {
-//                startActivity(intent)
-//            }
-//        }
+        items.onItemClickListener = AdapterView.OnItemClickListener { _, _, i, _ ->
+            val article = adapter.getItem(i)
+            if (article != null) {
+                val intent = Intent(this, ArticleDetailActivity::class.java)
+                intent.putExtra("artikel.id", article.article_id)
+                startActivity(intent)
+            }
+
+        }
 
 
         container.setOnRefreshListener { ArticleService.instance.getAll().enqueue(this) }
