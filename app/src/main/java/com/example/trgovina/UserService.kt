@@ -17,6 +17,16 @@ object UserService {
         @GET("prijava")
         fun logIn(@Query("email") email: String, @Query("password") id: String ): Call<User>
 
+        @FormUrlEncoded
+        @POST("urediProfil")
+        fun update(@Field("id") id: String,
+                   @Field("name") name: String,
+                   @Field("surname") surname: String,
+                   @Field("street") street: String,
+                   @Field("house_number") house_number: String,
+                   @Field("post") post: String,
+                   @Field("post_number") post_number: String,
+                   @Field("email") email: String): Call<Void>
     }
 
     val instance: RestApi by lazy {

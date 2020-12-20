@@ -3,7 +3,7 @@ package com.example.trgovina
 import java.io.Serializable
 
 data class User(
-        val customer_id: String = "",
+        val costumer_id: String = "",
         val name: String = "",
         val surname: String = "",
         val street: String = "",

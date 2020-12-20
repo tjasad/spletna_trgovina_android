@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
         }
 
         btnOdjava.setOnClickListener {
-            app.customer_id = null;
+            app.costumer_id = null;
             app.email = null;
             app.house_number = null;
             app.name = null;

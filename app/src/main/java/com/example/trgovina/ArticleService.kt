@@ -20,9 +20,6 @@ object ArticleService {
         @GET("artikli")
         fun get(@Query("id") id: Int): Call<Article>
 
-        @GET("prijava")
-        fun get(@Query("email") email: String, @Query("password") id: String ): Call<User>
-
     }
 
     val instance: RestApi by lazy {

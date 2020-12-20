@@ -4,9 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import kotlinx.android.synthetic.main.activity_log_in.*
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,7 +56,7 @@ class LogInFormActivity : AppCompatActivity() {
                 userApp.house_number = activity.currentUser!!.house_number;
                 userApp.post = activity.currentUser!!.post;
                 userApp.email = activity.currentUser!!.email;
-                userApp.customer_id = activity.currentUser!!.customer_id;
+                userApp.costumer_id = activity.currentUser!!.costumer_id;
 
             } else {
                 val errorMessage = try {

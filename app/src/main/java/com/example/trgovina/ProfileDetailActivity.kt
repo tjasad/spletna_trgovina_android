@@ -1,15 +1,10 @@
 package com.example.trgovina
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.activity_user_preferencess.*
-import kotlinx.android.synthetic.main.content_article_detail.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.IOException
 
 class ProfileDetailActivity : AppCompatActivity() {
     private var article: Article = Article()
@@ -30,6 +25,16 @@ class ProfileDetailActivity : AppCompatActivity() {
         postText.text = app.post
         postNumberText.text = app.post_number
         streetText.text = app.street
+
+        nazajBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        shraniUsrBtn.setOnClickListener {
+            val intent = Intent(this, EditUserFormActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

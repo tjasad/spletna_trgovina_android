@@ -3,7 +3,7 @@ package com.example.trgovina
 import android.app.Application
 
 class UserApplicationObject : Application() {
-    var customer_id: String? = null
+    var costumer_id: String? = null
     var name: String? = null
     var surname: String? = null
     var street: String? = null
