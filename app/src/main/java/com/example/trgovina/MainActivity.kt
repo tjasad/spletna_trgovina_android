@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
         btnPrijava.setOnClickListener {
             val intent = Intent(this, LogInFormActivity::class.java)
             startActivity(intent)
+        }
+
+        val name = intent.getIntExtra("com.example.user.name",0)
+        if(name.equals(0)){
+            btnOdjava.setVisibility(View.GONE);
+            btnPregledProfila.setVisibility(View.GONE);
+        }else{
+            btnOdjava.setVisibility(View.VISIBLE);
+            btnPregledProfila.setVisibility(View.VISIBLE);
         }
 
         container.setOnRefreshListener { ArticleService.instance.getAll().enqueue(this) }

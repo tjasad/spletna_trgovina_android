@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
+import android.view.View
 import kotlinx.android.synthetic.main.activity_log_in.*
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,7 +14,7 @@ import java.io.IOException
 
 class LogInFormActivity : AppCompatActivity() {
 
-    private var user: User? = null
+    var currentUser: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +24,16 @@ class LogInFormActivity : AppCompatActivity() {
             val email = emailText.text.toString().trim()
             val password = passwordText.text.toString().trim()
 
-            UserService.instance.logIn(email,password).enqueue(LogInFormActivity.OnLoadCallbacks(this))
+            val user = UserService.instance.logIn(email,password).enqueue(LogInFormActivity.OnLoadCallbacks(this))
 
+            //dodamo v sejo userja
+            //val userApp = application as UserApplicationObject
+            //userApp.name = currentUser?.name;
+
+
+            //kaj če preko tega intenta pošljem podatke pa na main strani shranim sejo
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("com.example.user.name", currentUser?.name)
             startActivity(intent)
 
         }
@@ -37,15 +44,15 @@ class LogInFormActivity : AppCompatActivity() {
 
     private class OnLoadCallbacks(val activity: LogInFormActivity) : Callback<User> {
         private val tag = this::class.java.canonicalName
+        
 
         override fun onResponse(call: Call<User>, response: Response<User>) {
-            activity.user = response.body() ?: User()
+            activity.currentUser = response.body() ?: User()
 
-            Log.i(tag, "Got result: ${activity.user}")
+            Log.i(tag, "Got result: ${activity.currentUser}")
 
             if (response.isSuccessful) {
-                //tle je pa treba shranit v nekaj podobnega seji
-                //in it nazaj na trgovina activity
+
 
             } else {
                 val errorMessage = try {
