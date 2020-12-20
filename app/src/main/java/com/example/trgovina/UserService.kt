@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
-object ArticleService {
+object UserService {
 
     interface RestApi {
 
@@ -14,14 +14,8 @@ object ArticleService {
             const val URL = "http://10.0.2.2:8080/netbeans/seminarska_naloga/index.php/seminarska_naloga/api/"
         }
 
-        @GET("artikli")
-        fun getAll(): Call<List<Article>>
-
-        @GET("artikli")
-        fun get(@Query("id") id: Int): Call<Article>
-
         @GET("prijava")
-        fun get(@Query("email") email: String, @Query("password") id: String ): Call<User>
+        fun logIn(@Query("email") email: String, @Query("password") id: String ): Call<User>
 
     }
 

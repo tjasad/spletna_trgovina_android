@@ -26,6 +26,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.trgovina.MainActivity" />
         </activity>
+        <activity
+            android:name=".LogInFormActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.trgovina.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

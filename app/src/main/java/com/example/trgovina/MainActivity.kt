@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
 
         }
 
+        btnPrijava.setOnClickListener {
+            val intent = Intent(this, LogInFormActivity::class.java)
+            startActivity(intent)
+        }
 
         container.setOnRefreshListener { ArticleService.instance.getAll().enqueue(this) }
 
