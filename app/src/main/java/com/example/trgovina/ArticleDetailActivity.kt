@@ -40,7 +40,7 @@ class ArticleDetailActivity : AppCompatActivity() {
             Log.i(tag, "Got result: ${activity.article}")
 
             if (response.isSuccessful) {
-                activity.tvArticleDetail.text = activity.article.article_price.toString() + "EUR" +"\n"+ activity.article.article_description
+                activity.tvArticleDetail.text = activity.article.article_price.toString() + " EUR" +"\n"+ activity.article.article_description
                 activity.toolbarLayout.title = activity.article.article_name
             } else {
                 val errorMessage = try {

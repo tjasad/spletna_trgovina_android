@@ -48,6 +48,24 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
             btnPregledProfila.setVisibility(View.VISIBLE);
         }
 
+        btnOdjava.setOnClickListener {
+            app.customer_id = null;
+            app.email = null;
+            app.house_number = null;
+            app.name = null;
+            app.surname = null;
+            app.post = null;
+            app.post_number = null;
+            app.street = null;
+            btnOdjava.setVisibility(View.GONE);
+            btnPregledProfila.setVisibility(View.GONE);
+        }
+
+        btnPregledProfila.setOnClickListener {
+            val intent = Intent(this, ProfileDetailActivity::class.java)
+            startActivity(intent)
+        }
+
         container.setOnRefreshListener { ArticleService.instance.getAll().enqueue(this) }
 
 

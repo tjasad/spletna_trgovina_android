@@ -52,6 +52,13 @@ class LogInFormActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 val userApp = activity.application as UserApplicationObject
                 userApp.name = activity.currentUser!!.name;
+                userApp.surname = activity.currentUser!!.surname;
+                userApp.street = activity.currentUser!!.street;
+                userApp.post_number = activity.currentUser!!.post_number;
+                userApp.house_number = activity.currentUser!!.house_number;
+                userApp.post = activity.currentUser!!.post;
+                userApp.email = activity.currentUser!!.email;
+                userApp.customer_id = activity.currentUser!!.customer_id;
 
             } else {
                 val errorMessage = try {
