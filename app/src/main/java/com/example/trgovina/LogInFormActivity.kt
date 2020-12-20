@@ -30,10 +30,8 @@ class LogInFormActivity : AppCompatActivity() {
             //val userApp = application as UserApplicationObject
             //userApp.name = currentUser?.name;
 
-
             //kaj če preko tega intenta pošljem podatke pa na main strani shranim sejo
             val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("com.example.user.name", currentUser?.name)
             startActivity(intent)
 
         }
@@ -44,7 +42,7 @@ class LogInFormActivity : AppCompatActivity() {
 
     private class OnLoadCallbacks(val activity: LogInFormActivity) : Callback<User> {
         private val tag = this::class.java.canonicalName
-        
+
 
         override fun onResponse(call: Call<User>, response: Response<User>) {
             activity.currentUser = response.body() ?: User()
@@ -52,7 +50,8 @@ class LogInFormActivity : AppCompatActivity() {
             Log.i(tag, "Got result: ${activity.currentUser}")
 
             if (response.isSuccessful) {
-
+                val userApp = activity.application as UserApplicationObject
+                userApp.name = activity.currentUser!!.name;
 
             } else {
                 val errorMessage = try {

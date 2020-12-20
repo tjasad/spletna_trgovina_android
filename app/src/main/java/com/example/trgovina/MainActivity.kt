@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity(), Callback<List<Article>> {
             startActivity(intent)
         }
 
-        val name = intent.getIntExtra("com.example.user.name",0)
-        if(name.equals(0)){
+        val app = application as UserApplicationObject;
+        if(app.name.equals(null)){
             btnOdjava.setVisibility(View.GONE);
             btnPregledProfila.setVisibility(View.GONE);
         }else{
